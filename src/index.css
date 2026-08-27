@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes auroraFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatGlow1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.35;
+  }
+  33% {
+    transform: translate(40px, -30px) scale(1.15);
+    opacity: 0.55;
+  }
+  66% {
+    transform: translate(-30px, 25px) scale(0.9);
+    opacity: 0.4;
+  }
+}
+
+@keyframes floatGlow2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translate(-45px, 35px) scale(1.2);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translate(35px, -25px) scale(0.95);
+    opacity: 0.35;
+  }
+}
+
+@keyframes floatGlow3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1.05);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate(30px, 40px) scale(1.15);
+    opacity: 0.45;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.animate-slideLeft {
+  animation: slideLeft 0.3s ease-out forwards;
+}
+
+.animate-aurora-slow {
+  background-size: 300% 300%;
+  animation: auroraFlow 18s ease infinite;
+}
+
+.animate-float-glow-1 {
+  animation: floatGlow1 14s ease-in-out infinite;
+}
+
+.animate-float-glow-2 {
+  animation: floatGlow2 18s ease-in-out infinite;
+}
+
+@keyframes laserScan {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(350px);
+    opacity: 0.2;
+  }
+}
+
+.animate-laserScan {
+  animation: laserScan 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes progressShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes smoothIndeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes smoothIndeterminateShort {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+
+.animate-shimmer {
+  animation: progressShimmer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-indeterminate {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: currentColor;
+  animation: smoothIndeterminate 1.8s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+html {
+  color-scheme: dark;
+  background-color: #020617;
+}
+
+body {
+  background-color: #020617;
+  color: #f8fafc;
+}

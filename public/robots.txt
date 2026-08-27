@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block sensitive or transient paths if applicable
+Disallow: /api/razorpay/verify-payment
+
+Sitemap: https://website-health-platform.app/sitemap.xml

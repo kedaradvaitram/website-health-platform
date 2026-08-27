@@ -1,0 +1,6 @@
+{
+  "name": "Website Health & Security Platform",
+  "description": "Enterprise website audit platform for analyzing performance, SEO, SSL security, DNS records, accessibility, automated code fixes, and real-time team video meetings.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

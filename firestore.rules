@@ -1,0 +1,71 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Real-time Global Active Presence & Session Telemetry
+    match /active_sessions/{sessionId} {
+      allow read, write: if true;
+    }
+
+    // User Profiles
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if true;
+    }
+    
+    // Custom OTP Records
+    match /otp_verifications/{otpId} {
+      allow read, write: if true;
+    }
+    
+    // Audit History
+    match /audits/{auditId} {
+      allow read: if true;
+      allow create, update, delete: if true;
+    }
+    
+    // User Reviews & 5-Star Testimonials
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if true;
+    }
+
+    // Live Video Meetings, Join Requests & Real-time Collaboration
+    match /meetings/{roomId} {
+      allow read: if true;
+      allow create, update, delete: if true;
+
+      match /join_requests/{requestId} {
+        allow read, write: if true;
+      }
+      match /participants/{participantId} {
+        allow read, write: if true;
+      }
+      match /messages/{messageId} {
+        allow read, write: if true;
+      }
+      match /polls/{pollId} {
+        allow read, write: if true;
+      }
+    }
+
+    // Team Workspaces & Collaborative Security
+    match /workspaces/{workspaceId} {
+      allow read: if true;
+      allow create, update, delete: if true;
+
+      match /members/{memberId} {
+        allow read, write: if true;
+      }
+      match /invitations/{inviteId} {
+        allow read, write: if true;
+      }
+      match /reports/{reportId} {
+        allow read, write: if true;
+      }
+      match /issues/{issueId} {
+        allow read, write: if true;
+      }
+    }
+  }
+}

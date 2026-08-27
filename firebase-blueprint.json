@@ -1,0 +1,262 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and audit credits",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "credits": { "type": "number" },
+        "referralCode": { "type": "string" },
+        "referredBy": { "type": "string" },
+        "referralCount": { "type": "number" },
+        "unlockedWebsites": { 
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "apiKey": { "type": "string" },
+        "apiKeyName": { "type": "string" },
+        "apiKeyStatus": { "type": "string" },
+        "apiTier": { "type": "string" },
+        "apiWalletBalance": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "email"]
+    },
+    "OtpVerification": {
+      "title": "OtpVerification",
+      "description": "Email OTP verification record",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "code": { "type": "string" },
+        "expiresAt": { "type": "number" },
+        "isUsed": { "type": "boolean" },
+        "recipientName": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email", "code", "expiresAt"]
+    },
+    "AuditHistory": {
+      "title": "AuditHistory",
+      "description": "Saved audit reports for user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "url": { "type": "string" },
+        "hostname": { "type": "string" },
+        "overallScore": { "type": "number" },
+        "perfScore": { "type": "number" },
+        "secScore": { "type": "number" },
+        "seoScore": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["userId", "url", "overallScore"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "User 5-star ratings, feedback and testimonials",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userRole": { "type": "string" },
+        "companyOrWebsite": { "type": "string" },
+        "rating": { "type": "number" },
+        "title": { "type": "string" },
+        "feedback": { "type": "string" },
+        "categoryTag": { "type": "string" },
+        "scoreBefore": { "type": "number" },
+        "scoreAfter": { "type": "number" },
+        "verified": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userName", "rating", "feedback"]
+    },
+    "TeamWorkspace": {
+      "title": "TeamWorkspace",
+      "description": "Team workspace for shared security reports and collaboration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "domainOrOrg": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "ownerEmail": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "ownerId", "ownerEmail"]
+    },
+    "WorkspaceMember": {
+      "title": "WorkspaceMember",
+      "description": "Team member enrolled in a workspace",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "joinedAt": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    },
+    "WorkspaceInvitation": {
+      "title": "WorkspaceInvitation",
+      "description": "Pending email invitations to join team workspace",
+      "type": "object",
+      "properties": {
+        "workspaceId": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "invitedBy": { "type": "string" },
+        "invitedByName": { "type": "string" },
+        "invitedAt": { "type": "string" },
+        "expiresAt": { "type": "string" },
+        "status": { "type": "string" },
+        "token": { "type": "string" }
+      },
+      "required": ["workspaceId", "email", "role"]
+    },
+    "WorkspaceSharedReport": {
+      "title": "WorkspaceSharedReport",
+      "description": "Audit report shared with team members in workspace",
+      "type": "object",
+      "properties": {
+        "workspaceId": { "type": "string" },
+        "url": { "type": "string" },
+        "hostname": { "type": "string" },
+        "overallScore": { "type": "number" },
+        "perfScore": { "type": "number" },
+        "secScore": { "type": "number" },
+        "seoScore": { "type": "number" },
+        "sharedByEmail": { "type": "string" },
+        "sharedByName": { "type": "string" },
+        "sharedAt": { "type": "string" },
+        "tag": { "type": "string" }
+      },
+      "required": ["workspaceId", "url", "hostname", "overallScore"]
+    },
+    "WorkspaceSecurityIssue": {
+      "title": "WorkspaceSecurityIssue",
+      "description": "Security issue task being collaborated on by team",
+      "type": "object",
+      "properties": {
+        "workspaceId": { "type": "string" },
+        "reportHostname": { "type": "string" },
+        "metricId": { "type": "string" },
+        "title": { "type": "string" },
+        "severity": { "type": "string" },
+        "priority": { "type": "string" },
+        "status": { "type": "string" },
+        "assignedToEmail": { "type": "string" },
+        "assignedToName": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["workspaceId", "title", "status"]
+    },
+    "LiveMeeting": {
+      "title": "LiveMeeting",
+      "description": "Live meeting room session details and host configuration",
+      "type": "object",
+      "properties": {
+        "roomId": { "type": "string" },
+        "title": { "type": "string" },
+        "hostId": { "type": "string" },
+        "hostName": { "type": "string" },
+        "hostEmail": { "type": "string" },
+        "passcode": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["roomId", "hostName"]
+    },
+    "MeetingJoinRequest": {
+      "title": "MeetingJoinRequest",
+      "description": "Knocking request from participant waiting to be admitted by host",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "roomId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "status": { "type": "string" },
+        "requestedAt": { "type": "number" },
+        "role": { "type": "string" },
+        "avatarBg": { "type": "string" }
+      },
+      "required": ["id", "roomId", "name", "status"]
+    },
+    "ActiveSession": {
+      "title": "ActiveSession",
+      "description": "Real-time presence tracking for active concurrent site visitors",
+      "type": "object",
+      "properties": {
+        "sessionId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "isLoggedIn": { "type": "boolean" },
+        "lastActive": { "type": "number" },
+        "joinedAt": { "type": "number" },
+        "path": { "type": "string" }
+      },
+      "required": ["sessionId", "lastActive"]
+    }
+  },
+  "firestore": {
+    "/active_sessions/{sessionId}": {
+      "schema": "ActiveSession",
+      "description": "Real-time active presence sessions across devices and hosts"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles and credentials"
+    },
+    "/otp_verifications/{otpId}": {
+      "schema": "OtpVerification",
+      "description": "OTP verification codes for email logins"
+    },
+    "/audits/{auditId}": {
+      "schema": "AuditHistory",
+      "description": "User saved site audit results"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Public user feedback and 5-star testimonials"
+    },
+    "/meetings/{roomId}": {
+      "schema": "LiveMeeting",
+      "description": "Live meeting room sessions"
+    },
+    "/meetings/{roomId}/join_requests/{requestId}": {
+      "schema": "MeetingJoinRequest",
+      "description": "Participant join requests awaiting host admission"
+    },
+    "/workspaces/{workspaceId}": {
+      "schema": "TeamWorkspace",
+      "description": "Team workspace records"
+    },
+    "/workspaces/{workspaceId}/members/{memberId}": {
+      "schema": "WorkspaceMember",
+      "description": "Team members belonging to the workspace"
+    },
+    "/workspaces/{workspaceId}/invitations/{inviteId}": {
+      "schema": "WorkspaceInvitation",
+      "description": "Email invitations sent to join workspace"
+    },
+    "/workspaces/{workspaceId}/reports/{reportId}": {
+      "schema": "WorkspaceSharedReport",
+      "description": "Audit reports shared in the workspace"
+    },
+    "/workspaces/{workspaceId}/issues/{issueId}": {
+      "schema": "WorkspaceSecurityIssue",
+      "description": "Collaborative security remediation issues in workspace"
+    }
+  }
+}
